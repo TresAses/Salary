@@ -1,0 +1,51 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Listado de Legajos</div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="centros-listado-adicional">
+            <select id="selector_centros" class="choices_inner" data-placeholder="SELECCIONE UN CENTRO">
+                <option value="0" selected disabled>SELECCIONE UN CENTRO</option>
+            </select>
+        </div>
+        <div class="legajos-listado-adicional">
+            <select id="selector_legajos" class="choices_inner" data-placeholder="SELECCIONE UN LEGAJO">
+                <option value="0" selected disabled>SELECCIONE UN LEGAJO</option>
+            </select>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th>LEGAJO</th>
+                        <th>APELLIDO Y NOMBRE</th>
+                        <th>TIPO</th>
+                        <th>N° DOCUMENTO</th>
+                        <th>F. NAC.</th>
+                        <th>SEXO</th>
+                        <th>ABREV</th>
+                        <th>CENTRO DE COSTO</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-listado-legajos">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{%static 'js/Legajos/listarLegajos.js' %}"></script>
+
+{% endblock %}

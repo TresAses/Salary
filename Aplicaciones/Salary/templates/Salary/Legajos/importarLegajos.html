@@ -1,0 +1,31 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Importar Legajos</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+
+        <div class="items-formulario">
+            <input type="text" id="jsonFilePath" class="input-liquidacion" placeholder="Seleccione un archivo JSON" readonly required>
+            <input type="file" id="jsonFileUpload" class="file-input" accept=".json" style="display: none;">
+        </div>
+        <div class="items-formulario">
+            <button id="importButton" class="flatpickr-button-importar-legajos">IMPORTAR</button>
+        </div>
+
+    </div>
+
+    <script src="{%static 'js/Legajos/importarLegajos.js' %}"></script>
+
+
+</div>
+
+
+{% endblock %}

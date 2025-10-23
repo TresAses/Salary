@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <title>Ex-Salary</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
+    <link href="{%static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{%static 'css/fontawesome-all.css' %}" rel="stylesheet">
+    <link href="{%static 'css/swiper.css' %}" rel="stylesheet">
+    <link href="{%static 'css/magnific-popup.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="{%static 'css/styles.css' %}" rel="stylesheet">
+
+    <link rel="icon" href="{%static 'images/salary.ico' %}">
+</head>
+
+<body>
+
+    <div class="spinner-wrapper" id="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+
+            <!-- <a class="navbar-brand logo-image" href="{% url 'inicio_salary' %}"><img
+                    src="{%static 'images/logo-salary.png' %}" alt="alternative"></a> -->
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-awesome fas fa-bars"></span>
+                <span class="navbar-toggler-awesome fas fa-times"></span>
+            </button>
+            <!-- end of mobile menu toggle button -->
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">ADICIONALES</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_carga_adicional' %}"><span
+                                    class="item-text">Agregar
+                                    Adicional</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_carga_adicional_masivo' %}"><span
+                                    class="item-text">Agregar
+                                    Adicional Masivo</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_listado_adicional' %}"><span
+                                    class="item-text">Lista de
+                                    Adicionales</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">LIQUIDACIONES</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_carga_liquidacion' %}"><span
+                                    class="item-text">Agregar
+                                    Liquidación</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_listado_liquidacion' %}"><span
+                                    class="item-text">Lista de
+                                    Liquidaciones</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">PAGOS</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_liquidar' %}"><span
+                                    class="item-text">Liquidar</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_anula_liquidacion' %}"><span
+                                    class="item-text">Anular
+                                    Liquidación</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_imprimir' %}"><span
+                                    class="item-text">Imprimir</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-left: 4rem;">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">IMPORTAR</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- <a class="dropdown-item" href="{% url 'salary_importar_permanencia' %}"><span
+                                    class="item-text">Importar
+                                    Permanencia</span></a>
+                            <div class="dropdown-divider"></div> -->
+                            <a class="dropdown-item" href="{% url 'salary_importar_adicionales' %}"><span
+                                    class="item-text">Importar Adicionales</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">LEGAJOS</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_importar_legajos' %}"><span
+                                    class="item-text">Importar
+                                    Legajos</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_listar_legajos' %}"><span
+                                    class="item-text">Lista de
+                                    Legajos</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">CONCEPTOS</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_carga_concepto' %}"><span
+                                    class="item-text">Agregar
+                                    Conceptos</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_listar_conceptos' %}"><span
+                                    class="item-text">Listar
+                                    Conceptos</span></a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_pruebas_concepto' %}"><span
+                                    class="item-text">Pruebas</span></a> -->
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">C. COSTOS</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'salary_carga_centro' %}"><span
+                                    class="item-text">Agregar C.
+                                    Costos</span></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'salary_listar_centros' %}"><span
+                                    class="item-text">Listar C.
+                                    Costos</span></a>
+                        </div>
+                    </li>
+
+                </ul>
+                <span class="nav-item">
+                    <a class="btn-outline-sm page-scroll" href="{% url 'logout' %}">{{user.username.upper}}</a>
+                </span>
+                {% if request.user.is_superuser %}
+                <span class="nav-item">
+                    <a class="btn-outline-sm page-scroll" href="{% url 'administrador' %}">ADMIN</a>
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+
+
+    <header class="header">
+
+    </header>
+
+    <div class="container-extension">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+    <div id="popup" class="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <div id="mensaje-pop-up">
+
+        </div>
+    </div>
+
+
+
+
+        <script src="{%static 'js/jquery.min.js' %}"></script>
+        <script src="{%static 'js/popper.min.js' %}"></script>
+        <script src="{%static 'js/bootstrap.min.js' %}"></script>
+        <!-- <script src="{%static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{%static 'js/swiper.min.js' %}"></script> -->
+        <script src="{%static 'js/jquery.magnific-popup.js' %}"></script>
+        <script src="{%static 'js/validator.min.js' %}"></script>
+        <script src="{%static 'js/scripts.js' %}"></script>
+
+</body>
+
+</html>

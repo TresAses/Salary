@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Incluir CSS de Choices.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+</head>
+
+<body>
+    <!-- Selector de opciones con Choices.js -->
+    <select id="selector_conceptos" data-placeholder="SELECCIONE CONCEPTO">
+        <option value="" selected disabled>SELECCIONE UN CONCEPTO</option>
+    </select>
+
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const choices = new Choices('#selector_conceptos', {
+                allowHTML: true,
+                shouldSort: false 
+            });
+            window.addEventListener("load", async () => {
+                await listarConceptos();
+            });
+
+            const listarConceptos = async () => {
+                try {
+                    const response = await fetch("llenar-combox/");
+                    const data = await response.json();
+                    if (data.Message === "Success") {
+                        let result = [];
+                        result.push(); 
+                        data.Datos.forEach((datos) => {
+                            result.push({ value: datos.IdConcepto, label: datos.Descripcion });
+                        });
+                        choices.setChoices(result, 'value', 'label', true);
+                    } else {
+                        console.error("No tiene permisos para resolver la petición.");
+                    }
+                } catch (error) {
+                    console.error("Se produjo un error al procesar la solicitud.", error);
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+</head>
+<body>
+    <select id="selector_conceptos" class="choices"></select>
+
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const choices = new Choices('#selector_conceptos');
+
+            window.addEventListener("load", async () => {
+                await listarConceptos();
+            });
+
+            const listarConceptos = async () => {
+                try {
+                    const response = await fetch("llenar-combox/")
+                    const data = await response.json();
+                    if (data.Message == "Success") {
+                        let result = [];
+                        data.Datos.forEach((datos) => {
+                            result.push({value: datos.IdConcepto, label: datos.Descripcion});
+                        });
+                        choices.setChoices(result, 'value', 'label', true);
+                    } else {
+                        console.error("No tiene permisos para resolver la petición.");
+                    }
+                } catch (error) {
+                    console.error("Se produjo un error al procesar la solicitud.", error);
+                }
+            }
+        });
+    </script>
+</body> -->
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <select id="selector_conceptos" class="select2"></select>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+
+        window.addEventListener("load", async () => {
+            await listarConceptos();
+        });
+
+        const listarConceptos = async () => {
+            try {
+                const response = await fetch("llenar-combox/")
+                const data = await response.json();
+                if (data.Message == "Success") {
+                    let result = `<option value="0" style="font-weight: bold;">SELECCIONE CONCEPTO</option>`;
+                    data.Datos.forEach((datos) => {
+                        result += `<option value="${datos.IdConcepto}">${datos.Descripcion}</option>`;
+                    });
+                    document.getElementById('selector_conceptos').innerHTML = result;
+                    $('.select2').trigger("change");
+                } else {
+                    console.error("No tiene permisos para resolver la petición.");
+                }
+            } catch (error) {
+                console.error("Se produjo un error al procesar la solicitud.", error);
+            }
+        }
+    </script>
+</body>
+
+</html> -->
+
+
+
+<!-- <select class="selectpicker" id="selector_conceptos" data-live-search="true">
+    <option data-hidden="true">SELECCIONE CONCEPTO</option>
+</select>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+Incluir Bootstrap JS 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ Incluir Bootstrap Select JS 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.14/js/bootstrap-select.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.querySelector('.selectpicker');
+
+        const listarConceptos = async () => {
+            try {
+                const response = await fetch("{% url 'lista_conceptos' %}"); // Asegúrate de que esta URL sea correcta
+                const data = await response.json();
+                if (data.Message === "Success") {
+                    let result = `<option data-hidden="true">SELECCIONE CONCEPTO</option>`;
+                    data.Datos.forEach((datos) => {
+                        result += `<option value="${datos.IdConcepto}">${datos.Descripcion}</option>`;
+                    });
+                    select.innerHTML = result;
+                    $('.selectpicker').selectpicker('refresh');
+                } else {
+                    console.error("No tiene permisos para resolver la petición.");
+                }
+            } catch (error) {
+                console.error("Se produjo un error al procesar la solicitud.", error);
+            }
+        }
+
+        listarConceptos();
+    });
+</script> -->

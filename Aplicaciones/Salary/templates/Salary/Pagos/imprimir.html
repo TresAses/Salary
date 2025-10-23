@@ -1,0 +1,88 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Impresiones</div>
+</div>
+
+<div class="contenedor-imprimir-listado">
+    <div class="columna-1-imprimir">
+
+        <div class="contenedor-form-imprimir">
+            <div class="input-container">
+                <input type="text" class="date-input fecha-impresion" id="fechaInicio" name="fecha"
+                    placeholder="Selecciona una fecha">
+                <input type="text" class="date-input fecha-impresion-final" id="fechaFinal" name="fecha"
+                    placeholder="Selecciona una fecha">
+                <button style="margin-left: 1rem;" class="flatpickr-button" id="buscaImprimir">BUSCAR</button>
+            </div>
+            <div class="selector-chosen-impresion">
+                <select id="selector_liquidacion" class="choices_inner" data-placeholder="SELECCIONE UNA LIQUIDACIÓN">
+                    <option value="" selected disabled>SELECCIONE UNA LIQUIDACIÓN</option>
+                </select>
+            </div>
+
+            <div class="contenedorTabla-imprimir">
+
+                <table class="tabla-imprimir-masiva">
+                    <thead>
+                        <tr class="encabezado-lista-imprimir">
+                            <th style="width: 40px;"><input type="checkbox" class="input-checkbox checkbox"
+                                    id="selectAll"></th>
+                            <th>CENTRO / GASTO</th>
+                            <th>CANT.</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="imprimir-lista-liquidaciones">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="columna-2-imprimir">
+
+        <div class="contenedor-form-imprimir">
+            <div class="contenedorTabla-imprimir-columna-2">
+
+                <table class="tabla-imprimir-masiva">
+                    <thead>
+                        <tr class="encabezado-lista-adicional">
+                            <th style="width: 50px; min-width: 80px;">LEGAJO</th>
+                            <th>APELLIDO Y NOMBRE</th>
+                            <th>CENTRO / GASTO</th>
+                            <th>CANT.</th>
+                            <th>TOTAL</th>
+                            <th>OPCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detalles_contenido_liquidaciones">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="detalles-finales">
+                <span class="span-id" id="cantidad_total" data-value="0">CANTIDAD DE CONCEPTOS: 0</span>
+                <span class="span-id" id="importe_total" style="margin-left: 2.5rem;" data-value="0">IMPORTE TOTAL: 0</span>
+            </div>
+            <div class="buscar-listado-imprimir">
+                <button class="flatpickr-button-imprimir" id="imprimir_planilla">IMPRIMIR PLANILLA</button>
+                <button class="flatpickr-button-imprimir" id="imprimir_memo">IMPRIMIR MEMO</button>
+                <button class="flatpickr-button-imprimir" id="imprimir_recibo">IMPRIMIR RECIBOS</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{%static 'js/Pagos/imprimir.js' %}"></script>
+
+{% endblock %}

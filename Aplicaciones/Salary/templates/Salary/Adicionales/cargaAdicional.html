@@ -1,0 +1,59 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Carga de Adicionales</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+        <div class="idAdicional">
+            <span class="span-id" id="id-a" data-value="0">ID: 0</span>
+        </div>
+        <div class="items-formulario">
+            <select id="selector_legajos" class="choices_inner" data-placeholder="SELECCIONE UN LEGAJO">
+                <option value="" selected disabled>SELECCIONE UN LEGAJO</option>
+            </select>
+        </div>
+        <div class="input-container items-formulario">
+            <select id="selector_centros" class="choices_inner" data-placeholder="SELECCIONE UN CENTRO">
+                <option value="" selected disabled>SELECCIONE UN CENTRO</option>
+            </select>
+        </div>
+        <div class="items-formulario">
+            <select id="selector_conceptos" class="choices_inner" data-placeholder="SELECCIONE UN CONCEPTO">
+                <option value="" selected disabled>SELECCIONE UN CONCEPTO</option>
+            </select>
+        </div>
+
+        <div class="input-container items-formulario">
+            <input type="text" class="date-input inputAdicional" id="fecha" name="fecha"
+                placeholder="Selecciona una fecha">
+            <input type="number" class="date-input inputAdicional" id="importe" step="50" placeholder="Importe: $"
+                style="margin-left: 1rem;">
+        </div>
+
+
+        <div class="items-formulario">
+            <textarea type="text" id="detalle" class="text-observaciones" rows="5" placeholder="Detalle"></textarea>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button class="inverted-flatpickr-button" id="nuevo-adicional">NUEVO</button>
+            <button class="flatpickr-button" onclick="guardarAdicional();">GUARDAR</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{%static 'js/Adicional/adicional.js' %}"></script>
+{% endblock %}

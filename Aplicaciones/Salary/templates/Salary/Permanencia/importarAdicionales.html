@@ -1,0 +1,40 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Importar Adicionales</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+
+        <div class="items-formulario">
+            <input type="text" id="excelFilePath" class="input-liquidacion" placeholder="Seleccione un archivo EXCEL" readonly required>
+            <input type="file" id="excelFileUpload" class="file-input" accept=".xlsx" style="display: none;">
+        </div>
+        <div class="items-formulario">
+            <button id="importButton" class="flatpickr-button-importar-legajos">IMPORTAR</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="popup_duplicado" class="popup-overlay-eliminacion">
+    <div class="popup-content">
+        <h3>ARCHIVO DUPLICADO</h3>
+        <div id="info_content">
+            
+        </div>
+        <div class="popup-buttons">
+            <button id="btn-confirmar-aceptar" class="flatpickr-button">ACEPTAR</button>
+        </div>
+    </div>
+</div>
+
+<script src="{%static 'js/Importar/importarAdicionales.js' %}"></script>
+
+{% endblock %}

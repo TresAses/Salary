@@ -1,0 +1,104 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Listado de Liquidaciones</div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaInicio" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaFinal" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class="centros-listado-adicional">
+            <select id="selector_estados" class="choices_inner" data-placeholder="SELECCIONE UN ESTADO">
+                <option value="" selected disabled>SELECC. UN ESTADO</option>
+                <option value="0" style="font-weight: bold;">TODO</option>
+                <option value="A">ABIERTO</option>
+                <option value="C">CERRADO</option>
+                <!-- <option value="L">LIQUIDADO</option> -->
+            </select>
+        </div>
+        <div class=" buscar-listado-adicional">
+            <button class="flatpickr-button-listado" onclick="llenarTablaLiquidaciones();">BUSCAR</button>
+            <button class="flatpickr-button-liquidar" id="cerrar">CERRAR</button>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th style="width: 40px;"></th>
+                        <th>ID</th>
+                        <th>DESCRIPCIÓN LiQUIDACIÓN</th>
+                        <th>ESTADO</th>
+                        <th>FECHA ALTA</th>
+                        <th>USUARIO ALTA</th>
+                        <th>FECHA MODIFICACIÓN</th>
+                        <th>USUARIO MODIFICACIÓN</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="listado-tabla-liquidaciones">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="pop-up-overlay"></div>
+<div id="pop-up-actualizaLiquidacion">
+    <div class="contenedor-pop-conceptos" id="popup-actualizaAdicional">
+        <div class="idAdicional">
+            <span class="span-id" id="id_a_act" data-value="0">ID: 0</span>
+        </div>
+        <div class="items-formulario">
+            <input type="text" id="carpeta_act" class="input-liquidacion">
+        </div>
+        <div class="items-formulario" >
+            <button class="estado-btn" id="estado_act" onclick="toggleEstado(this)"></button>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fechaA_act" class="readonly-liquidacion" placeholder="Fecha Alta" readonly>
+            <input type="text" id="userA_act" class="readonly-liquidacion margen" placeholder="Usuario Alta" readonly>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fechaM_act" class="readonly-liquidacion" placeholder="Fecha Modificación" readonly>
+            <input type="text" id="userM_act" class="readonly-liquidacion margen" placeholder="Usuario Modificación" readonly>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button class="inverted-flatpickr-button" id="cerrar-pop">CERRAR</button>
+            <button class="flatpickr-button" id="actualiza-pop">ACTUALIZAR</button>
+        </div>
+    </div>
+</div>
+
+<div id="popup-Cierra" class="popup-overlay-eliminacion">
+    <div class="popup-content">
+        <h3>CONFIRMAR CIERRE</h3>
+        <p>¿Está seguro de que deseas cerrar las Liquidaciones?</p>
+        <div class="popup-buttons">
+            <button id="btn-cancelar-eliminacion" class="inverted-flatpickr-button" onclick="ocultarPopupCerrar()">CANCELAR</button>
+            <button id="btn-confirmar-cierre" class="flatpickr-button">CERRAR</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{%static 'js/Liquidaciones/listado-liquidacion.js' %}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .chosen-container {
+        font-size: 1.2rem;
+        width: 100% !important;
+    }
+
+    .chosen-container .chosen-single {
+        height: 4rem;
+        line-height: 3.5rem;
+        border: 1px solid #007bff;
+        background: #fff;
+    }
+
+    .chosen-container .chosen-drop {
+        width: 100%;
+        border: 1px solid #007bff;
+        width: 100% !important;
+    }
+
+    .chosen-container .chosen-single span {
+        color: #001327;
+        font-weight: bold;
+
+    }
+</style>
+<div class="encabezado">
+    <div class="sub-titulo">Listado de Centros de Costos</div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="conceptos-listado-centros">
+            <select id="selector_centros" class="choices_inner" data-placeholder="SELECCIONE CENTRO">
+                <option value="" selected disabled>SELECCIONE UN CENTRO</option>
+            </select>
+        </div>
+        <div class=" buscar-listado-adicional">
+            <button class="flatpickr-button-listado" id="btn_buscar_centros">BUSCAR</button>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th>ABREV.</th>
+                        <th>DESCRIPCIÓN CENTRO</th>
+                        <th>FECHA ALTA</th>
+                        <th>USUARIO</th>
+                        <th>FECHA MODIFICACIÓN</th>
+                        <th>USUARIO MODIFICACIÓN</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla_centros">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="popup-eliminacion" class="popup-overlay-eliminacion">
+    <div hidden id="idElimina"></div>
+    <div class="popup-content">
+        <h3>CONFIRMAR ELIMINACIÓN</h3>
+        <p>¿Estás seguro de que deseas eliminar este Centro?</p>
+        <div class="popup-buttons">
+            <button id="btn_cancelar" class="inverted-flatpickr-button">CANCELAR</button>
+            <button id="btn_confirmar" class="flatpickr-button">ELIMINAR</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{%static 'js/Centros/listarCentros.js' %}"></script>
+
+
+{% endblock %}

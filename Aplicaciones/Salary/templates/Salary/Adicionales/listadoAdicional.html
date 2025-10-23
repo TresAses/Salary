@@ -1,0 +1,131 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado encabezado-horizontal ">
+    <div class="sub-titulo sub-titulo-centrado">Listado de Adicionales</div>
+    <div class="sub-titulo-derecha" id="cant_importe">
+        <div>*</div>
+    </div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaInicio" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaFinal" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class="centros-listado-adicional">
+            <select id="selector_centros" class="choices_inner" data-placeholder="SELECCIONE UN CENTRO">
+                <option value="" selected disabled>SELECCIONE UN CENTRO</option>
+            </select>
+        </div>
+        <div class="legajos-listado-adicional">
+            <select id="selector_legajos" class="choices_inner" data-placeholder="SELECCIONE UN LEGAJO">
+                <option value="" selected disabled>SELECCIONE UN LEGAJO</option>
+            </select>
+        </div>
+        <div class="conceptos-listado-adicional">
+            <select id="selector_conceptos" class="choices_inner" data-placeholder="SELECCIONE UN CONCEPTO">
+                <option value="" selected disabled>SELECC.UN CONCEPTO</option>
+            </select>
+        </div>
+        <div class="estado-listado-adicional">
+            <select id="selector_estados" class="choices_inner" data-placeholder="SELECCIONE UN ESTADO">
+                <option value="" selected disabled>SELECC. UN ESTADO</option>
+            </select>
+        </div>
+        <div class=" buscar-listado-adicional">
+            <button class="flatpickr-button-listado" onclick="llenarTablaAdicionales();">BUSCAR</button>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th>LEGAJO</th>
+                        <th>APELLIDO Y NOMBRE</th>
+                        <th>CENTRO / GASTO</th>
+                        <th>CONCEPTO</th>
+                        <th>FECHA</th>
+                        <th>IMPORTE</th>
+                        <th>ESTADO</th>
+                        <th>FECHA ALTA</th>
+                        <th>USUARIO</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="listado-tabla-adicionales">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div id="pop-up-overlay"></div>
+<div id="pop-up-actualizaAdicional">
+    <div class="contenedor-pop-conceptos" id="popup-actualizaAdicional">
+        <div class="idAdicional">
+            <span class="span-id" id="id-a_act" data-value="0">ID: 0</span>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="user_act" class="readonly-liquidacion" placeholder="" readonly>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="centro-user_act" class="readonly-liquidacion" placeholder="" readonly>
+        </div>
+        <div class="items-formulario">
+            <select id="selector_conceptos_act" class="choices_inner" data-placeholder="SELECCIONE UN CONCEPTO">
+                <option value="" selected disabled>SELECCIONE UN CONCEPTO</option>
+            </select>
+        </div>
+
+        <div class="input-container items-formulario">
+            <input type="text" class="date-input inputAdicional" id="fecha_act" name="fecha"
+                placeholder="Selecciona una fecha">
+            <input type="number" class="date-input inputAdicional" id="importe_act" step="50" placeholder="Importe: $"
+                style="margin-left: 1rem;">
+        </div>
+        <div class="items-formulario">
+            <textarea type="text" id="detalle_act" class="text-observaciones" rows="5" placeholder="Detalle"></textarea>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button class="inverted-flatpickr-button" onclick="inactivo();">CERRAR</button>
+            <button class="flatpickr-button" onclick="actualizaAdicional();">ACTUALIZAR</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="popup-eliminacion" class="popup-overlay-eliminacion">
+    <div hidden id="idElimina"></div>
+    <div class="popup-content">
+        <h3>Confirmar Anulación</h3>
+        <p>¿Estás seguro de que deseas anular este registro?</p>
+        <div class="popup-buttons">
+            <button id="btn-cancelar-eliminacion" class="inverted-flatpickr-button" onclick="ocultarPopupEliminacion()">CANCELAR</button>
+            <button id="btn-confirmar-eliminacion" class="flatpickr-button" onclick="eliminaAdicional();">ANULAR</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- <script src="{%static 'js/Librerias/choices.min.js' %}"></script>
+<script src="{%static 'js/Librerias/jquery-3.6.0.min.js' %}"></script> -->
+<script src="{%static 'js/Adicional/listadoAdicional.js' %}"></script>
+
+
+{% endblock %}

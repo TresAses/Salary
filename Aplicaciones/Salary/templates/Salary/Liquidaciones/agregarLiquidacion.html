@@ -1,0 +1,44 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Liquidaciones</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+        <div class="idAdicional">
+            <span class="span-id" id="id-l" data-value="0">ID: 0</span>
+        </div>
+        <div class="items-formulario">
+            <input type="text" id="carpeta" class="input-liquidacion" placeholder="Descripción de Liquidación">
+        </div>
+        <div class="items-formulario">
+            <button class="estado-btn">ABIERTO</button>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fechaA" class="readonly-liquidacion" placeholder="Fecha Alta" readonly>
+            <input type="text" id="userA" class="readonly-liquidacion margen" placeholder="Usuario Alta" readonly>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fechaM" class="readonly-liquidacion" placeholder="Fecha Modificación" readonly>
+            <input type="text" id="userM" class="readonly-liquidacion margen" placeholder="Usuario Modificación" readonly>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button class="inverted-flatpickr-button" id="nueva-liquidacion">NUEVO</button>
+            <button class="flatpickr-button" onclick="guardarLiquidacion();">GUARDAR</button>
+        </div>
+
+    </div>
+
+    <script src="{%static 'js/Liquidaciones/agregaLiquidacion.js' %}"></script>
+
+</div>
+
+
+{% endblock %}

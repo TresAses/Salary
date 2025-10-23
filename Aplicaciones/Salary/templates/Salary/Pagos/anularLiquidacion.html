@@ -1,0 +1,83 @@
+
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Anular Liquidación</div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaInicio" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class="fecha-listado-adicional">
+            <input type="text" class="date-input inputAdicional-listado" id="fechaFinal" name="fecha"
+                placeholder="Selecciona una fecha">
+        </div>
+        <div class=" buscar-listado-adicional">
+            <button class="flatpickr-button-listado" id="buscaAnular">BUSCAR</button>
+        </div>
+        <div class="centros-listado-adicional">
+            <select id="selector_liquidacion" class="choices_inner" data-placeholder="SELECCIONE UNA LIQUIDACIÓN">
+                <option value="" selected disabled>SELECCIONE UNA LIQUIDACIÓN</option>
+            </select>
+        </div>
+        <div class="centros-listado-adicional">
+            <select id="selector_centros" class="choices_inner" data-placeholder="SELECCIONE UN CENTRO">
+                <option value="" selected disabled>SELECCIONE UN CENTRO</option>
+            </select>
+        </div>
+        <div class="centros-listado-adicional">
+            <select id="selector_legajos" class="choices_inner" data-placeholder="SELECCIONE UN LEGAJO">
+                <option value="" selected disabled>SELECCIONE UN LEGAJO</option>
+            </select>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th>ID</th>                        
+                        <th>LEGAJO</th>
+                        <th >APELLIDO Y NOMBRE</th>
+                        <th>CENTRO / GASTO</th>
+                        <th>CONCEPTO</th>
+                        <th>DETALLE</th>
+                        <th>FECHA</th>
+                        <th>IMPORTE</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="listado-tabla-anula-liquidaciones">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="popup-liquida" class="popup-overlay-liquidacion">
+    <div class="popup-content">
+        <h3>CONFIRMAR ELIMINACIÓN</h3>
+        <p>¿Estás seguro que deseas quitar el adicional de la liquidacion?</p>
+        <div hidden id="idAdicional_remove"></div>
+        <div class="popup-buttons">
+            <button id="btn-cancelar-eliminacion" class="inverted-flatpickr-button">CANCELAR</button>
+            <button id="btn-confirmar-quitar" class="flatpickr-button">QUITAR</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{%static 'js/Pagos/anulaLiquidacion.js' %}"></script>
+
+{% endblock %}

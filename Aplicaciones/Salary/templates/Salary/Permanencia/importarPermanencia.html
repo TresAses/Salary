@@ -1,0 +1,58 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Importar Permanencia</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+
+        <div class="items-formulario">
+            <input type="text" id="jsonFilePath" class="input-liquidacion" placeholder="Seleccione un archivo EXCEL" readonly required>
+            <input type="file" id="jsonFileUpload" class="file-input" accept=".xlxs" style="display: none;">
+        </div>
+        <div class="items-formulario">
+            <button id="importButton" class="flatpickr-button-importar-legajos">IMPORTAR</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('jsonFilePath').addEventListener('click', function () {
+            document.getElementById('jsonFileUpload').click();
+        });
+
+        document.getElementById('jsonFileUpload').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('jsonFilePath').value = file.name;
+            }
+        });
+
+        document.getElementById('importButton').addEventListener('click', function () {
+            const fileInput = document.getElementById('jsonFileUpload');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const jsonContent = e.target.result;
+                    // Aquí puedes agregar la lógica para manejar el contenido del archivo JSON
+                    console.log('JSON Content:', jsonContent);
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Por favor, seleccione un archivo JSON.');
+            }
+        });
+
+    </script>
+
+</div>
+
+
+{% endblock %}

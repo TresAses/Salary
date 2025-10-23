@@ -1,0 +1,58 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Listado de Conceptos</div>
+</div>
+
+<div class="contenedor-adicional-listado">
+
+    <div class="contenedor-form-listado">
+        <div class="conceptos-listado-conceptos">
+            <select id="selector_conceptos" class="choices_inner" data-placeholder="SELECCIONE CONCEPTO">
+                <option value="" selected disabled>SELECCIONE UN CONCEPTO</option>
+            </select>
+        </div>
+        <div class=" buscar-listado-adicional">
+            <button class="flatpickr-button-listado" onclick="listadoConceptos();">BUSCAR</button>
+        </div>
+    </div>
+    <div class="contenedor-form-listado">
+        <div class="contenedor-tabla-adicional-lista">
+            <table class="tabla-adicional-masiva">
+                <thead>
+                    <tr class="encabezado-lista-adicional">
+                        <th>ID</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>FECHA ALTA</th>
+                        <th>USUARIO</th>
+                        <th>FECHA MODIFICACIÓN</th>
+                        <th>USUARIO MODIFICACIÓN</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-listado-conceptos">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{%static 'js/Conceptos/listarConceptos.js' %}"></script>
+
+<div id="pop-up-overlay"></div>
+<div id="pop-up-actualizaconcepto">
+    <div class="contenedor-pop-conceptos" id="popup-actualizaconcepto">
+        
+
+    </div>
+</div>
+
+{% endblock %}

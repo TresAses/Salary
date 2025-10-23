@@ -1,0 +1,46 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Carga de Centro de Costo</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+        <div class="idAdicional">
+            <span class="span-id" id="id" data-value="0">ID: 0</span>
+        </div>
+        <div class="items-formulario">
+            <input id="abrev" type="text" class="input-liquidacion" placeholder="Abreviación del Centro de Costo" required>
+        </div>
+        <div class="items-formulario">
+            <input id="descripcion" type="text" class="input-liquidacion" placeholder="Descripción del Centro de Costo" required>
+        </div>
+        <div class="input-container items-formulario">
+            <input id="fecha-alta" type="text" class="readonly-liquidacion" placeholder="Fecha Alta" readonly>
+            <input id="usuario-alta" type="text" class="readonly-liquidacion margen" placeholder="Usuario Alta" readonly>
+        </div>
+        <div class="input-container items-formulario">
+            <input id="fecha-modifica" type="text" class="readonly-liquidacion" placeholder="Fecha Modificación" readonly>
+            <input id="usuario-modifica" type="text" class="readonly-liquidacion margen" placeholder="Usuario Modificación" readonly>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button id="nuevo-centro" class="inverted-flatpickr-button">NUEVO</button>
+            <button class="flatpickr-button" onclick="guardarCentro();">GUARDAR</button>
+        </div>
+
+    </div>
+
+    <script src="{%static 'js/Centros/agregarCentros.js' %}"></script>
+
+    <script src="{%static 'js/General/general.js' %}"></script>
+
+</div>
+
+
+{% endblock %}

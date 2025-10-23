@@ -1,0 +1,41 @@
+{% extends "Salary/Inicio/index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="encabezado">
+    <div class="sub-titulo">Carga de Concepto</div>
+</div>
+
+<div class="contenedor">
+
+    <div class="contenedor-form">
+        <div class="idAdicional" id="id-nuevo-concepto">
+            <span class="span-id" id="id-sc" data-value="0">ID: 0</span>
+        </div>
+        <div class="items-formulario">
+            <input type="text" id="descripcion-nuevo-concepto" class="input-liquidacion" placeholder="Descripción del Concepto" required>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fecha-alta" class="readonly-liquidacion" placeholder="Fecha Alta" readonly>
+            <input type="text" id="usuario-alta" class="readonly-liquidacion margen" placeholder="Usuario Alta" readonly>
+        </div>
+        <div class="input-container items-formulario">
+            <input type="text" id="fecha-modifica" class="readonly-liquidacion" placeholder="Fecha Modificación" readonly>
+            <input type="text" id="usuario-modifica" class="readonly-liquidacion margen" placeholder="Usuario Modificación" readonly>
+        </div>
+
+        <div class="adicionalBotones items-formulario">
+            <button id="nuevo-concepto" class="inverted-flatpickr-button">NUEVO</button>
+            <button class="flatpickr-button" onclick="guardarConcepto();">GUARDAR</button>
+        </div>
+
+    </div>
+
+    <script src="{%static 'js/Conceptos/agregarConcepto.js' %}"></script>
+
+</div>
+
+
+{% endblock %}
